@@ -22,7 +22,7 @@
 
 			<ul class="nav navbar-nav mr-auto navbar-right">
 				<li><a href="#" @click="endDay">End Day</a></li>
-				<li class="dropdown" :class="{ open: dropDown }" @click="dropDown ^= true">
+				<li class="dropdown" :class="{ open: dropDown }" @click="dropDown ^= true" @focusout="dropDown=false">
 					<a 
 						class="dropdown-toggle" 
 						href="#" 
