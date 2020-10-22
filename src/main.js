@@ -1,27 +1,21 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 
 import App from './App.vue';
-import {routes} from './routes';
-import store from './store/store';
+import router from './router';
+import store from './store';
 
-Vue.use(VueRouter);
-const router = new VueRouter({
-	mode: 'history',
-	routes: routes
-});
+Vue.config.productionTip = false;
 
 Vue.use(VueResource);
 Vue.http.options.root = "https://vuejs-stock-trader-app-5032a.firebaseio.com/";
 
 Vue.filter('currency', value => {
 	return '$' + value.toLocaleString();
-})
+});
 
 new Vue({
-  el: '#app',
-  router: router,
-  store: store,
-  render: h => h(App)
-})
+  router,
+  store,
+  render: function (h) { return h(App) }
+}).$mount('#app');
